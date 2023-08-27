@@ -1,0 +1,1 @@
+HousePoints Discord Bot helps keep track of points of houses. Add new houses, members to houses. Add or deduct points from members/houses. Show Leaderboard. 
