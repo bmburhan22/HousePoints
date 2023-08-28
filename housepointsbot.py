@@ -137,23 +137,24 @@ async def leaderboard(ctx):
 
 @client.event
 async def on_member_update(before, after):
-    await sync_guild(before.guild)
-    # if before.roles != after.roles:
-    #     roles_removed = set(before.roles) - set(after.roles)
-    #     roles_added = set(after.roles) - set(before.roles)
-    #     db = read(before.guild.id)
+    if before.roles != after.roles:
+        roles_removed = set(before.roles) - set(after.roles)
+        roles_added = set(after.roles) - set(before.roles)
+        db = read(before.guild.id)
 
-    #     for role in roles_removed:
-    #         role_id = str(role.id)
-    #         if role_id in db["houses"]:
-    #             del db["houses"][role_id][str(after.id)]
+        for role in roles_removed:
+            role_id = str(role.id)
+            if role_id in db["houses"]:
+                del db["houses"][role_id][str(after.id)]
 
-    #     for role in roles_added:
-    #         role_id = str(role.id)
-    #         if role_id in db["houses"]:
-    #             db["houses"][role_id][str(after.id)] = 0
+        for role in roles_added:
+            role_id = str(role.id)
+            if role_id in db["houses"]:
+                db["houses"][role_id][str(after.id)] = 0
 
-    #     write(ctx.guild.id, db)
+        write(before.guild.id, db)
+    else:
+        await sync_guild(before.guild)
 
 
 @client.command()
