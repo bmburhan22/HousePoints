@@ -57,7 +57,7 @@ async def help(ctx):
 @client.command()
 @commands.has_permissions(administrator=True)
 async def points_limit(ctx, limit):
-    write(ctx.guild.id, {"points_limit": limit})
+    write(ctx.guild.id, {"points_limit": int(limit)})
     await ctx.message.reply(f'New limit: {read(ctx.guild.id)["points_limit"]}')
 
 
