@@ -42,14 +42,19 @@ async def on_ready():
 async def help(ctx):
     help_message = (
         "Here are the available commands:\n\n"
-        + "/points_limit <limit>: Set the points limit.\n"
-        + "/houses: Display information about houses and their points.\n"
-        + "/user: Display points and house for mentioned users.\n"
-        + "/leaderboard: Display a leaderboard of houses and their members' points.\n"
-        + "/register: Register a new house.\n"
-        + "/delete: Delete a house.\n"
-        + "/points <amount> to <user/house>: Add points to users or house.\n"
-        + "/points <amount> from <user/house>: Remove points from users or house."
+        "Synchronize the discord server members' attributes with the database.```/sync```\n"
+        "Display information about houses and their points.```/houses```\n"
+        "Display points and house for mentioned users.```/user <@user_1> <@user_2> ... <@user_n>```\n"
+        "Display a leaderboard of houses and their members' points.```/leaderboard```\n\n"
+        "Moderators commands:\n\n"
+        "Add points to users or all members of houses.```/points <amount> to <@user/@house>```\n"
+        "Remove points from users or all members of houses.```/points <amount> from <@user/@house>```\n\n"
+        "Admin commands:\n\n"
+        "Add roles as moderators.```/mod add <@role_1> <@role_2> ... <@role_n>```\n"
+        "Remove roles as moderators.```/mod remove <@role_1> <@role_2> ... <@role_n>```\n"
+        "Set the points limit.```/points_limit <limit>```\n"
+        "Register new houses.```/register <@house_1> <@house_2> ... <@house_n>```\n"
+        "Delete houses.```/delete <@house_1> <@house_2> ... <@house_n>```\n"
     )
     await ctx.message.reply(help_message)
 
