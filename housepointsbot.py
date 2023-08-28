@@ -4,22 +4,27 @@ import discord
 from discord.ext import commands
 import os, json, copy
 from dotenv import load_dotenv
+
 load_dotenv()
+
 
 def db_open(guild_id, rw):
     os.makedirs(os.path.dirname(servers_path), exist_ok=True)
     return open(f"{servers_path}{guild_id}.json", rw, encoding="utf-8")
+
 
 def write(guild_id, d):
     db = read(guild_id)
     db.update(d)
     json.dump(db, db_open(guild_id, "w"))
 
+
 def read(guild_id):
     try:
         return json.load(db_open(guild_id, "r"))
     except:
         return {"points_limit": 50, "houses": {}, "mods": {}}
+
 
 client = commands.Bot(
     help_command=None,
